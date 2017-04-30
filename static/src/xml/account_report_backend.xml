@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-extend="accountReports.searchView" name="fal_account_report_filter.searchView_inherit">
+        <t t-jquery="div:last" t-operation="after">
+            <!-- <div class="o_dropdown o_account_reports_date-filter-fal-account-type" t-if="context.fal_available_account_type_ids">
+                <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-filter"/> Account Type: <span class="caret"/>
+                </a>
+                <ul class="dropdown-menu o_filters_menu" role="menu">
+                    <t t-foreach="context.fal_available_account_type_ids" t-as="c">
+                        <li t-att-title="c[1]" t-att-data-value="c[0]" t-att-class="'o_account_reports_one-falaccounttype ' + ((context.fal_account_type_ids.indexOf(c[0]) !== -1) and 'selected' or '')"><a><t t-esc='c[1]'/></a></li>
+                    </t>
+                </ul>
+            </div> -->
+            <div class="o_dropdown o_account_reports_tags-filter" t-if="context.available_analytic_account_ids">
+                <a type="button" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-folder-open"/> Analytic
+                    <span class="caret"/>
+                </a>
+                <ul class="dropdown-menu o_filters_menu" role="menu">
+                    <li style='margin-left: 10px; margin-right: 10px;'>
+                        <b>Accounts</b><br />
+                        <select class="o_account_reports_analytic_account_auto_complete" multiple="multiple" style="min-width: 100px;">
+                            <t t-foreach="context.available_analytic_account_ids" t-as="a">
+                                <option t-att-value="a[0]"><t t-esc="a[1]" /></option>
+                            </t>
+                        </select>
+                        <button type="button" class="btn btn-primary o_account_reports_add_analytic_account">Apply</button>
+                    </li>
+                    <li class="divider"></li>
+                    <li style='margin-left: 10px; margin-right: 10px;'>
+                        <b>Customers</b><br />
+                        <select class="o_account_reports_customer_auto_complete" multiple="multiple" style="min-width: 100px;">
+                            <t t-foreach="context.available_customer_ids" t-as="a">
+                                <option t-att-value="a[0]"><t t-esc="a[1]" /></option>
+                            </t>
+                        </select>
+                        <button type="button" class="btn btn-primary o_account_reports_add_customer">Apply</button>
+                    </li>
+                    <li class="divider"></li>
+                    <li style='margin-left: 10px; margin-right: 10px;'>
+                        <b>Business Unit</b><br />
+                        <select class="o_account_reports_business_unit_auto_complete" multiple="multiple" style="min-width: 100px;">
+                            <t t-foreach="context.available_business_unit_ids" t-as="a">
+                                <option t-att-value="a[0]"><t t-esc="a[1]" /></option>
+                            </t>
+                        </select>
+                        <button type="button" class="btn btn-primary o_account_reports_add_business_unit">Apply</button>
+                    </li>
+                </ul>
+            </div>
+        </t>
+    </t>
+
+</templates>
